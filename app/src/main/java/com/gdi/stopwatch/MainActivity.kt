@@ -9,6 +9,8 @@ class MainActivity : AppCompatActivity() {
     var timeTextView: TextView? = null
     var startButton: Button? = null
 
+    var isTimerRunning: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         timeTextView = findViewById(R.id.tv_time)
         startButton = findViewById(R.id.btn_start)
 
-        startButton?.setOnClickListener { startButton?.setText("Stop") }
+        startButton?.setOnClickListener {
+            isTimerRunning = !isTimerRunning
+            startButton?.setText(if (isTimerRunning) "Stop" else "Start")
+        }
     }
 }
